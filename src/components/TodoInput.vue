@@ -5,15 +5,20 @@
       <span class="addContainer" v-on:click="addTodo">
         <i class="far fa-plus-square addBtn"></i>
       </span>
+   <Modal v-if="showModal" @close="showModal = false">
+    <h3 slot="header"> custom header <i class="closeModalBtn fas fa-times" @click="showModal = false"></i></h3>    
+  </Modal>
   </div>
 </template>
 
 <script>
+import Modal from './common/Modal.vue'
 export default {
 
 data: function(){
   return {
-    newTodoItem: ""
+    newTodoItem: "",
+    showModal: false
   }
 },
 methods: {
@@ -21,11 +26,16 @@ methods: {
     if (this.newTodoItem !== '') {
       this.$emit('addTodoItem',this.newTodoItem);
     this.clearInput();
+    }else{
+      this.showModal = !this.showModal;
     }
   },
   clearInput: function(){
     this.newTodoItem = '';
   }
+},
+components: {
+  Modal : Modal
 }
 }
 </script>
@@ -54,5 +64,8 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>

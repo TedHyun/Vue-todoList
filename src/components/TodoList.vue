@@ -3,7 +3,7 @@
       <ul>
         <li>------</li>
         <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
-          <i class="far fa-check-square" v-bind:class="{checkBtnCompleted: todoItems.completed}"
+          <i class="far fa-check-square" v-bind:class="{checkBtnCompleted: todoItem.completed}"
            v-on:click="toggleComplete(todoItem, index)"></i>/
           <span v-bind:class="{textCompleted: todoItem.completed}">{{todoItem.item}}</span>
           <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
