@@ -4,7 +4,7 @@
         <li>------</li>
         <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
           <i class="far fa-check-square" v-bind:class="{checkBtnCompleted: todoItem.completed}"
-           v-on:click="toggleComplete(todoItem, index)"></i>/
+           v-on:click="toggleComplete(todoItem, index)"></i>
           <span v-bind:class="{textCompleted: todoItem.completed}">{{todoItem.item}}</span>
           <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
           <i class="fas fa-trash"></i>
@@ -20,11 +20,11 @@
 export default {
   props: ['propsdata'],
   methods: {
-    removeTodo: function(todoItem,index) {
+    removeTodo(todoItem,index) {
      this.$emit('removeItem',todoItem, index);
      //console.log(todoItem, index);
     },
-    toggleComplete: function(todoItem, index) {
+    toggleComplete(todoItem, index) {
       this.$emit('toggleItem', todoItem, index);
   }
 }
@@ -65,4 +65,7 @@ li {
   margin-left: auto;
   color: #de4343;
 }
+
+/* 리스트 아이템 트랜젝션 효과 */
+
 </style>
