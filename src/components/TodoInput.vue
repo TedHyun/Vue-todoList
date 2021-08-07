@@ -24,7 +24,9 @@ data(){
 methods: {
   addTodo() {
     if (this.newTodoItem !== '') {
-      this.$emit('addTodoItem',this.newTodoItem);
+      //this.$emit('addTodoItem',this.newTodoItem);
+      const text = this.newTodoItem.trim();
+      this.$store.commit('addOneItem', text);
     this.clearInput();
     }else{
       this.showModal = !this.showModal;
